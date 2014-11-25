@@ -19,7 +19,7 @@ public class DeadLock {
 			System.out.format("%s: %s" + "  has bowed to me!%n", this.name,
 					bower.getName());
 
-			// Ankit;
+			// Ankit Gupta;
 			bower.bowBack(this);
 		}
 
