@@ -3,15 +3,44 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-      http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-      http://www.springframework.org/schema/context
-      http://www.springframework.org/schema/context/spring-context-3.2.xsd
-      http://www.springframework.org/schema/util
-      http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.2.xsd
+http://www.springframework.org/schema/util 
+http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-	<bean id="carfactory" class="com.geekthread.patterns.factory.CarFactory">
-	
+
+
+	<bean id="poodle" class="com.geekthread.patterns.factory.Poodle" />
+	<bean id="siberianhusky" class="com.geekthread.patterns.factory.SiberianHusky" />
+	<bean id="rottweiler" class="com.geekthread.patterns.factory.Rottweiler" />
+
+
+	<bean id="dogfactory" class="com.geekthread.patterns.factory.DogFactory">
+		<property name="poodle" ref="poodle"></property>
+		<property name="siberianhusky" ref="siberianhusky"></property>
+		<property name="rottweiler" ref="rottweiler"></property>
 	</bean>
 
+
+	<util:list id="environmentList">
+		<value type="com.geekthread.patterns.factory.Dog.environment">SUMMER</value>
+		<value type="com.geekthread.patterns.factory.Dog.environment">WINTER</value>
+		<value type="com.geekthread.patterns.factory.Dog.environment">AUTUMN</value>
+	</util:list>
+
+	<util:map id="innerMap" map-class="java.util.HashMap"
+		 value-type="java.util.ArrayList">
+		<entry key="com.geekthread.patterns.factory.Dog.coatsize.THIN" value-ref="environmentList"></entry>
+		<entry key="com.geekthread.patterns.factory.Dog.coatsize.MEDIUM" value-ref="environmentList"></entry>
+		<entry key="com.geekthread.patterns.factory.Dog.coatsize.THIK" value-ref="environmentList"></entry>
+	</util:map>
+
+	<util:map id="selectionCriteria" map-class="java.util.HashMap"
+		value-type="java.util.HashMap">
+		<entry key="com.geekthread.patterns.factory.Dog.breedtype.SMALL" value-ref="innerMap"></entry>
+		<entry key="com.geekthread.patterns.factory.Dog.breedtype.WORKING" value-ref="innerMap"></entry>
+		<entry key="com.geekthread.patterns.factory.Dog.breedtype.BIG" value-ref="innerMap"></entry>
+	</util:map>
 
 </beans>
