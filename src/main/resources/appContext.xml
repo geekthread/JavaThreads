@@ -20,6 +20,7 @@ http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 		<property name="poodle" ref="poodle"></property>
 		<property name="siberianhusky" ref="siberianhusky"></property>
 		<property name="rottweiler" ref="rottweiler"></property>
+		<property name="selectionCriteria" ref="selectionCriteria"></property>
 	</bean>
 
 
@@ -36,11 +37,11 @@ http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 		<entry key="com.geekthread.patterns.factory.Dog.coatsize.THIK" value-ref="environmentList"></entry>
 	</util:map>
 
-	<util:map id="selectionCriteria" map-class="java.util.HashMap"
+	<util:map id="selectionCriteria" map-class="java.util.HashMap" key-type="com.geekthread.patterns.factory.Dog.breedtype"
 		value-type="java.util.HashMap">
-		<entry key="com.geekthread.patterns.factory.Dog.breedtype.SMALL" value-ref="innerMap"></entry>
-		<entry key="com.geekthread.patterns.factory.Dog.breedtype.WORKING" value-ref="innerMap"></entry>
-		<entry key="com.geekthread.patterns.factory.Dog.breedtype.BIG" value-ref="innerMap"></entry>
+		<entry key="SMALL" value-ref="innerMap"></entry>
+		<entry key="WORKING" value-ref="innerMap"></entry>
+		<entry key="BIG" value-ref="innerMap"></entry>
 	</util:map>
 
 </beans>

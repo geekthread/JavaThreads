@@ -1,9 +1,22 @@
 package com.geekthread.patterns.factory;
 
+import java.util.HashMap;
+
 public class DogFactory {
 	Poodle poodle;
 	Rottweiler rottweiler;
 	SiberianHusky siberianhusky;
+
+	HashMap<com.geekthread.patterns.factory.Dog.breedtype, java.util.HashMap<com.geekthread.patterns.factory.Dog.coatsize, java.util.ArrayList<com.geekthread.patterns.factory.Dog.environment>>> selectionCriteria;
+	
+	public HashMap<com.geekthread.patterns.factory.Dog.breedtype, java.util.HashMap<com.geekthread.patterns.factory.Dog.coatsize, java.util.ArrayList<com.geekthread.patterns.factory.Dog.environment>>> getSelectionCriteria() {
+		return selectionCriteria;
+	}
+
+	public void setSelectionCriteria(
+			HashMap<com.geekthread.patterns.factory.Dog.breedtype, java.util.HashMap<com.geekthread.patterns.factory.Dog.coatsize, java.util.ArrayList<com.geekthread.patterns.factory.Dog.environment>>> selectionCriteria) {
+		this.selectionCriteria = selectionCriteria;
+	}
 
 	public Poodle getPoodle() {
 		return poodle;
